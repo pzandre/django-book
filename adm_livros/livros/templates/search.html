@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for book in object_list %}
+<li>
+    <h3><a href="{% url 'book-detail' book.pk %}">{{ book.name }}</a></h3>
+</li>    
+{% empty %}
+   There's no results for your search.
+{% endfor %}
+
+{% endblock %}

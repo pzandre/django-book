@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div>
+    <a href="{% url 'admin:index' %}">Dashboard</a>
+</div>
+
+<div>
+    <a href="{% url 'add-book' %}">Add a new book</a>
+</div>
+<div>
+    <a href="{% url 'add-book' %}"></a>
+</div>
+<form action="{% url 'search' %}" method="get">
+    <input name="q" type="text" placeholder="Search...">
+  </form>
+  {% for book in object_list %}
+<li>
+    <h2><a href="{% url 'book-detail' book.pk %}">{{ book.name }}</a></h2> -
+    {{ book.author }}
+    - R${{ book.price }}
+    {% if user.is_authenticated %}
+    <h4><a href="{% url 'update-book' book.id %}">Edit</a></h4>
+    <h4><a href="{% url 'delete-book' book.id %}">Delete</a></h4>
+    {% endif %}</li>
+{% endfor %}
+{% endblock %}

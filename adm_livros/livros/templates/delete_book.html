@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %} Book Administration | Delete Book {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+      <h1>Delete Book</h1>
+      <h3>Delete: {{ book.name }} - {{ book.author }}</h3>
+      <form method="POST">
+        {% csrf_token %}
+        <strong>Are you sure?</strong><br/><br/>
+        <button class="btn btn-secondary">Delete it!</button>
+      </div>
+    {% else %}
+      <h1>You're not allowed here!</h1>
+{% endif %}
+{% endblock %}

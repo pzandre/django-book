@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} Book Administration | Edit Book {% endblock %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Update Post</h1>
+    <form method="POST">
+    {% csrf_token %}
+    {% for field in form %}
+        <div class="mb-3">
+        <small>{{ field.label }}</small><br/>
+        {{ field }}
+        </div>
+    {% endfor %}
+    <button class="btn btn-secondary">Update Book</button>
+    </form>
+{% else %}
+    <h1>You're not allowed here!</h1>
+{% endif %}
+{% endblock %}
