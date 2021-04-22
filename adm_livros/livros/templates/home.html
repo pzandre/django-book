@@ -1,24 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 <div>
-    <a class="btn btn-primary" href="{% url 'admin:index' %}">Dashboard</a>
+    <a class="btn btn-secondary" href="{% url 'admin:index' %}">Dashboard</a>
 </div>
-
+<br>
 <div>
-    <a class="btn btn-primary" href="{% url 'add-book' %}">Add a new book</a>
+    <a class="btn btn-secondary" href="{% url 'add-book' %}">Add a new book</a>
 </div>
-
+<br>
 <form action="{% url 'search' %}" method="get">
     <input name="q" type="text" placeholder="Search...">
   </form>
+  <br>
   {% for book in object_list %}
-<li>
-    <h2><a href="{% url 'book-detail' book.pk %}">{{ book.name }}</a></h2> -
+  <li class="list-group-item"><div>
+    <h3><a href="{% url 'book-detail' book.pk %}">{{ book.name }}</a></h3> -
     {{ book.author }}
     - R${{ book.price }}
     {% if user.is_authenticated %}
-    <h4><a class="btn btn-primary" href="{% url 'update-book' book.id %}">Edit</a></h4>
-    <h4><a class="btn btn-primary" href="{% url 'delete-book' book.id %}">Delete</a></h4>
-    {% endif %}</li>
+    <h4><a class="btn btn-secondary" href="{% url 'update-book' book.id %}">Edit</a></h4>
+    <h4><a class="btn btn-secondary" href="{% url 'delete-book' book.id %}">Delete</a></h4>
+  </div> 
+</li>
+  
+    {% endif %}
 {% endfor %}
 {% endblock %}
