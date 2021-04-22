@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <div>
-    <a href="{% url 'admin:index' %}">Dashboard</a>
+    <a class="btn btn-primary" href="{% url 'admin:index' %}">Dashboard</a>
 </div>
 
 <div>
-    <a href="{% url 'add-book' %}">Add a new book</a>
+    <a class="btn btn-primary" href="{% url 'add-book' %}">Add a new book</a>
 </div>
-<div>
-    <a href="{% url 'add-book' %}"></a>
-</div>
+
 <form action="{% url 'search' %}" method="get">
     <input name="q" type="text" placeholder="Search...">
   </form>
@@ -19,8 +17,8 @@
     {{ book.author }}
     - R${{ book.price }}
     {% if user.is_authenticated %}
-    <h4><a href="{% url 'update-book' book.id %}">Edit</a></h4>
-    <h4><a href="{% url 'delete-book' book.id %}">Delete</a></h4>
+    <h4><a class="btn btn-primary" href="{% url 'update-book' book.id %}">Edit</a></h4>
+    <h4><a class="btn btn-primary" href="{% url 'delete-book' book.id %}">Delete</a></h4>
     {% endif %}</li>
 {% endfor %}
 {% endblock %}
