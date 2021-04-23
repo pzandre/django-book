@@ -42,6 +42,8 @@ class BookSearchView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        object_list = Book.objects.filter(Q(name__icontains=query))
-        
+        if query:
+            object_list = Book.objects.filter(Q(name__icontains=query))
+        else:
+            object_list = None
         return object_list
