@@ -3,8 +3,8 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Q 
 
-from .models import Book
-from .forms import BookAddForm, UpdateBookForm
+from .models import Book, Author
+from .forms import BookAddForm, UpdateBookForm, AuthorAddForm
 
 class HomeView(ListView):
     model = Book
@@ -15,6 +15,13 @@ class AddBookView(CreateView):
     model = Book
     template_name = 'add_book.html'
     form_class = BookAddForm
+    success_url = reverse_lazy('home')
+
+
+class AddAuthorView(CreateView):
+    model = Author
+    template_name = 'add_author.html'
+    form_class = AuthorAddForm
     success_url = reverse_lazy('home')
 
 

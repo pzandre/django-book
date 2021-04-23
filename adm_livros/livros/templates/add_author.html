@@ -1,20 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-{% block title %} Book Administration | Add Book {% endblock %}
+{% block title %} Book Administration | Add Author {% endblock %}
 {% if user.is_authenticated %}
-<h1>Add Book</h1>
+<h1>Add Author</h1>
     <form method="POST">
     {% csrf_token %}   
     {% for field in form %}
     <div class="mb-3">
         <small>{{ field.label }}</small><br/>
         {{ field }}
-        {% if field.label == 'Author' %}
-          <a href="{% url 'add-author' %}" class="btn btn-secondary" target="_blank">Add New Author</a>
-        {% endif %}
     </div>
     {% endfor %}
-    <button class="btn btn-secondary">Add Book</button>
+    <button class="btn btn-secondary">Add Author</button>
 </form>  
 {% else %}    
 <h1>You're not allowed here!</h1>
