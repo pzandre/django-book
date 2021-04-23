@@ -15,6 +15,7 @@ class AddBookView(CreateView):
     model = Book
     template_name = 'add_book.html'
     form_class = BookAddForm
+    success_url = reverse_lazy('home')
 
 
 class UpdateBookView(UpdateView):
